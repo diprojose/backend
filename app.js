@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 // Importar rutas
 var appRoutes = require('./routes/app');
 var loginRoutes = require('./routes/login');
+var uploadRoutes = require('./routes/upload');
+var cityRoutes = require('./routes/citys');
 var userRoutes = require('./routes/user');
 
 // Conexión a la base de datos
@@ -23,8 +25,10 @@ mongoose.connection.openUri('mongodb://localhost:27017/senaDB', (err, res)=> {
 })
 
 // Rutas
+app.use('/ciudad', cityRoutes);
 app.use('/usuario', userRoutes);
 app.use('/login', loginRoutes);
+app.use('/upload', uploadRoutes);
 app.use('/', appRoutes);
 
 // Escuchar peticiones

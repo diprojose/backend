@@ -1,7 +1,9 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-var SEED = require('../config/config').SEED;
+
+var mdAuth = require('../middlewares/auth');
+
 var app = express();
 
 var Usuario = require('../models/user');
@@ -61,8 +63,6 @@ app.post('/', (req, res)=> {
   });
 });
 
-
-
 // ================================
 // Actualizar usuario
 // ================================
@@ -87,9 +87,7 @@ app.put('/:id', (req, res)=> {
       })
     }
 
-    usuario.cedula = body.cedula;
-    usuario.email = body.email;
-    usuario.region = body.region;
+    usuario.nivelCompletado = body.nivelCompletado;
 
     usuario.save((err, usuarioGuardado)=> {
       if (err) {
