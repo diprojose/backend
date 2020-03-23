@@ -10,9 +10,9 @@ var Ciudad = require('../models/city');
 // ================================
 
 app.get('/', (req, res, next) =>{
-  Usuario.find({})
+  Ciudad.find({}, 'city puntos usuarios')
     .exec(
-    (err, users)=> {
+    (err, citys)=> {
       if (err) {
         return res.status(200).json({
           ok: false,
@@ -23,7 +23,7 @@ app.get('/', (req, res, next) =>{
 
       res.status(200).json({
         ok: true,
-        users: users
+        citys: citys
       })
 
   });
@@ -37,7 +37,7 @@ app.post('/', (req, res)=> {
 
   var body = req.body;
   var city = new Ciudad({
-    city: body.cedula,
+    city: body.ciudad,
   });
 
   city.save((err, ciudadGuardada) => {
