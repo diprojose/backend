@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 // Inicializar variables
 var app = express();
 
+app.get('/', function (req, res) {
+  res.send(JSON.stringify({ Hello: 'World'}));
+});
+
 // Body Parser
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
