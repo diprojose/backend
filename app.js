@@ -1,4 +1,5 @@
 // Requires
+var PORT = process.env.PORT || 3000;
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -32,6 +33,6 @@ app.use('/upload', uploadRoutes);
 app.use('/', appRoutes);
 
 // Escuchar peticiones
-app.listen(3000, ()=> {
+app.listen(PORT, ()=> {
   console.log('express server corriendo en el puerto 3000: \x1b[32m%s\x1b[0m', 'online');
 })
